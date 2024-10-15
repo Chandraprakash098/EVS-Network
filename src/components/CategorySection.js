@@ -1,51 +1,6 @@
 
-
-
-
-// const CategorySection = ({ category, articles }) => {
-//   if (!category) {
-//     console.warn("CategorySection: 'category' prop is required");
-//     return null;
-//   }
-
 import EntertainmentCard from "./EntertainmentCard";
 
-//   const safeArticles = articles || [];
-
-//   return (
-//     <div className="py-8">
-//       <h1 className="text-4xl font-bold mb-6 text-neonGreen">{category}</h1>
-//       {safeArticles.length > 0 ? (
-//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-//           {safeArticles.map((article, index) => (
-//             <div
-//               key={index}
-//               className="bg-gray-800 p-4 rounded-lg hover:shadow-lg transition-shadow duration-300"
-//             >
-//               <img
-//                 src={article.image}
-//                 alt={article.title}
-//                 className="mb-4 rounded"
-//               />
-//               <h2 className="text-xl font-semibold mb-2 text-neonGreen">
-//                 {article.title}
-//               </h2>
-//               <p className="text-white mb-4">{article.description}</p>
-//               <a
-//                 href={article.link}
-//                 className="text-neonGreen hover:text-white transition-colors duration-300"
-//               >
-//                 Read more
-//               </a>
-//             </div>
-//           ))}
-//         </div>
-//       ) : (
-//         <p className="text-white">No articles available at the moment.</p>
-//       )}
-//     </div>
-//   );
-// };
 const CategorySection = ({ category, articles }) => {
   if (!category) {
     console.warn("CategorySection: 'category' prop is required");

@@ -8,118 +8,75 @@
   --hot-pink: #FF69B4;
   --electric-blue: #7DF9FF;
   --gold: #FFD700;
-  /* Gold for elegance */
   --silver: #C0C0C0;
-  /* Silver for a modern touch */
   --dark-gray: #2E2E2E;
-  /* Dark gray for contrast */
   --light-gray: #E0E0E0;
-  /* Light gray for background */
 }
 
-body {
-  background-color: #000;
-  color: #fff;
-  font-family: 'Poppins', sans-serif;
-}
+@layer base {
+  body {
+    @apply bg-black text-white font-sans;
+  }
 
-/* Custom Glow Effect */
-.text-neonGreen {
-  color: var(--neon-green);
-  text-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green), 0 0 30px var(--neon-green);
-}
+  h1, h2, h3 {
+    @apply text-hotPink;
+  }
 
-/* Updated Section Gradient */
-.section-gradient {
-  background: linear-gradient(135deg, var(--deep-purple), var(--black));
-}
+  p {
+    @apply text-lightGray;
+  }
 
-/* Updated Card Styles */
-.card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(15px);
-  border-radius: 15px;
-  padding: 1.5rem;
-  transition: all 0.3s ease;
-  border: 1px solid var(--neon-green);
-}
+  a {
+    @apply text-gold transition-all duration-300 ease-in-out;
+  }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-}
-
-/* Button Styles */
-button,
-a {
-  transition: all 0.3s ease;
-}
-
-a {
-  color: var(--gold);
-  /* Gold for links */
-}
-
-button:hover,
-a:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px var(--neon-green);
-}
-
-/* Updated Heading Styles */
-h1,
-h2,
-h3 {
-  color: var(--hot-pink);
-  /* Hot pink for headings */
-}
-
-/* Updated Paragraph Styles */
-p {
-  color: var(--light-gray);
-  /* Light gray for paragraphs */
-}
-
-/* Image Hover Effect */
-.image-hover {
-  transition: all 0.3s ease;
-}
-
-.image-hover:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px var(--hot-pink);
-}
-
-/* Gradient Background for Sections */
-.bg-gradient {
-  background: linear-gradient(to bottom right, var(--deep-purple), var(--dark-gray));
-}
-
-/* Improve dropdown visibility */
-.bg-blackBg {
-  background-color: rgba(0, 0, 0, 0.8);
-  /* Slightly less opaque */
-}
-
-/* Ensure mobile menu is on top */
-@media (max-width: 768px) {
-  nav>div>div:last-child {
-    z-index: 50;
+  a:hover {
+    @apply text-neonGreen;
   }
 }
 
-/* Add some padding to the page to prevent content from being hidden under the fixed navbar */
-body {
-  padding-top: 30px;
+@layer components {
+  .neon-text {
+    @apply text-neonGreen;
+    text-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green);
+  }
+
+  .card {
+    @apply bg-white bg-opacity-10 backdrop-blur-md rounded-xl p-6 transition-all duration-300 ease-in-out border border-neonGreen;
+  }
+
+  .card:hover {
+    @apply transform -translate-y-1 shadow-lg shadow-neonGreen;
+  }
+
+  .btn {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .btn:hover {
+    @apply transform scale-105 shadow-md shadow-neonGreen;
+  }
+
+  .image-hover {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .image-hover:hover {
+    @apply transform scale-105 shadow-lg shadow-hotPink;
+  }
 }
 
-/* Make the navbar fixed at the top */
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
+@layer utilities {
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 5px var(--neon-green), 0 0 10px var(--neon-green);
+    }
+    to {
+      text-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green), 0 0 30px var(--neon-green);
+    }
+  }
 }
-
-

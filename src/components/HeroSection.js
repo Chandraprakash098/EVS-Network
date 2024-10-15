@@ -1,68 +1,66 @@
+import React, { useEffect, useRef } from "react";
+import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
+const HeroSection = () => {
+  const buttonRef = useRef(null);
 
-import React from "react";
+  useEffect(() => {
+    const button = buttonRef.current;
+    const handleMouseMove = (e) => {
+      const { left, top, width, height } = button.getBoundingClientRect();
+      const x = (e.clientX - left) / width;
+      const y = (e.clientY - top) / height;
+      button.style.setProperty("--x", x);
+      button.style.setProperty("--y", y);
+    };
+    button.addEventListener("mousemove", handleMouseMove);
+    return () => button.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
-// const HeroSection = () => {
-//   return (
-//     <section className="relative bg-blackBg min-h-screen flex items-center justify-center px-4 sm:px-6">
-//       <div className="text-center z-10">
-//         <h1 className="text-neonGreen text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6">
-//           Welcome to EVS Network
-//         </h1>
-//         <p className="text-white text-lg sm:text-xl md:text-2xl mb-6 sm:mb-10">
-//           Your Ultimate Destination for Glamour and Entertainment Updates
-//         </p>
-//         <a
-//           href="/hot-entertainment"
-//           className="bg-neonGreen text-blackBg px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:bg-white hover:text-neonGreen transition-all"
-//         >
-//           Explore Hot Entertainment
-//         </a>
-//       </div>
-//       <div className="absolute inset-0 bg-blackBg opacity-60"></div>
-//     </section>
-//   );
-// };
+  return (
+    <section className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black text-white overflow-hidden">
+      {/* Floating Background Elements */}
+      <div className="absolute w-48 h-48 bg-electricBlue rounded-full opacity-30 animate-float blur-lg top-10 left-10"></div>
+      <div className="absolute w-32 h-32 bg-neonGreen rounded-full opacity-40 animate-float-delay blur-xl bottom-16 right-20"></div>
 
-const HeroSection = () => (
-  <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-    <div className="absolute inset-0">
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-transparent" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--neon-green)_0%,_transparent_100%)] opacity-10" />
-    </div>
+      {/* Hero Content */}
+      <div className="relative z-10 max-w-5xl mx-auto text-center px-6 py-12">
+        <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 text-neonGreen animate-fadeIn">
+          Welcome to EVS Network
+        </h1>
+        <p className="font-body text-lg sm:text-xl md:text-2xl text-gray-300 mb-6 max-w-2xl mx-auto animate-fadeIn delay-100">
+          Stay Updated with the Latest Trends in Entertainment, Music, and Art!
+        </p>
 
-    <div className="relative z-10 max-w-4xl mx-auto text-center px-4">
-      <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-glow">
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-neonGreen to-white">
-          EVS Network
-        </span>
-      </h1>
-      <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto">
-        Your Ultimate Destination for Glamour and Entertainment Updates
-      </p>
-      <a
-        href="/hot-entertainment"
-        className="inline-flex items-center px-8 py-4 bg-neonGreen/20 text-neonGreen border border-neonGreen/50 rounded-full text-lg font-medium hover:bg-neonGreen hover:text-black transition-all duration-300 transform hover:-translate-y-1"
-      >
-        Explore Entertainment
-        <svg
-          className="w-5 h-5 ml-2"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
+        {/* Call to Action Button */}
+        <a
+          href="/hot-entertainment"
+          ref={buttonRef}
+          className="group relative inline-flex items-center px-6 py-3 md:px-8 md:py-4 bg-neonGreen/20 text-neonGreen border border-neonGreen/50 rounded-full text-lg font-medium hover:bg-neonGreen hover:text-black transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M13 7l5 5m0 0l-5 5m5-5H6"
-          />
-        </svg>
-      </a>
-    </div>
-  </section>
-);
+          <span className="relative z-10">Explore Entertainment</span>
+          <span
+            className="absolute inset-0 bg-gradient-to-r from-neonGreen to-electricBlue opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            style={{
+              transform:
+                "translate(calc(var(--x, 0) * 100%), calc(var(--y, 0) * 100%))",
+            }}
+          ></span>
+        </a>
+
+        {/* Tagline Section */}
+        <div className="mt-12 animate-fadeIn delay-200">
+          <h3 className="text-2xl md:text-3xl font-semibold text-electricBlue mb-4">
+            Your All-in-One Entertainment Hub
+          </h3>
+          <p className="font-body text-gray-400 max-w-md mx-auto">
+            Discover what's trending in Bollywood, Hollywood, and Traditional Art. 
+            Your journey into glamour starts here!
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default HeroSection;
-
-

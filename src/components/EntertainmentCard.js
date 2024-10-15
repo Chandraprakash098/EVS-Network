@@ -4,21 +4,6 @@
 import React from "react";
 import ImageWithFallback from "./ImageWithFallback";
 
-// const EntertainmentCard = ({ image, title, description, link }) => (
-//   <div className="bg-blackBg border border-neonGreen rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
-//     <img src={image} alt={title} className="w-full h-48 object-cover" />
-//     <div className="p-4">
-//       <h3 className="text-neonGreen text-xl font-semibold mb-2">{title}</h3>
-//       <p className="text-white text-sm mb-4">{description}</p>
-//       <a
-//         href={link}
-//         className="inline-block bg-neonGreen text-blackBg px-4 py-2 rounded-full text-sm font-semibold hover:bg-white hover:text-neonGreen transition-colors duration-300"
-//       >
-//         Read More
-//       </a>
-//     </div>
-//   </div>
-// );
 
 const EntertainmentCard = ({ image, title, description, link }) => (
   <div className="group relative bg-gradient-to-br from-gray-900 to-black border border-neonGreen/30 rounded-xl overflow-hidden shadow-xl hover:shadow-neonGreen/20 transition-all duration-500 transform hover:-translate-y-1">
