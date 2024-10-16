@@ -1,4 +1,5 @@
 import React from "react";
+import img from '../images/pexels-olly-3779409.jpg'
 
 const AboutUs = () => {
   return (
@@ -19,7 +20,7 @@ const AboutUs = () => {
       {/* Our Mission Section */}
       <div className="max-w-5xl mx-auto grid gap-8 md:grid-cols-2 items-center py-12 animate-fadeIn delay-200">
         <img
-          src="https://source.unsplash.com/featured/?cinema,entertainment"
+          src={img}
           alt="Our Mission"
           className="rounded-xl shadow-lg hover:scale-105 transition-transform duration-300"
         />
