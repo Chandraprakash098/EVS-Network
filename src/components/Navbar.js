@@ -99,7 +99,7 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link to="/">
-          <img src={logo} alt="EVS Network Logo" className="h-14 w-auto mr-10" />
+          <img src={logo} alt="EVS Network Logo" className="h-10 w-auto mr-10" />
         </Link>
 
         {/* Desktop Links */}
