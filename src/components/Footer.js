@@ -46,10 +46,10 @@ const Footer = () => {
         <div className="space-y-4">
           <h2 className="text-xl font-bold mb-4">Get in Touch</h2>
           <p className="flex items-center space-x-3">
-            <FaEnvelope /> <span>support@evsnetwork.com</span>
+            <FaEnvelope /> <span>evosynchtech@gmail.com</span>
           </p>
           <p className="flex items-center space-x-3">
-            <FaPhoneAlt /> <span>+1-234-567-890</span>
+            <FaPhoneAlt /> <span>+91 8957128328</span>
           </p>
         </div>
       </div>
@@ -89,7 +89,7 @@ const Footer = () => {
 
         {/* Copyright Text */}
         <p className="text-xs sm:text-sm text-gray-400">
-          © 2024 Chandra | All Rights Reserved
+        Copyrights © 2024. All rights reserved
         </p>
       </div>
     </footer>
