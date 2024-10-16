@@ -17,6 +17,8 @@ import MusicBollywood from "./pages/MusicBollywood";
 import MusicHollywood from "./pages/MusicHollywood";
 import TraditionalArtBollywood from "./pages/TraditionalArtBollywood";
 import TraditionalArtHollywood from "./pages/TraditionalArtHollywood";
+import Career from "./pages/Career";
+import Blog from "./pages/Blog";
 
 function App() {
   return (
@@ -47,6 +49,8 @@ function App() {
               path="/traditional-art/hollywood"
               element={<TraditionalArtHollywood />}
             />
+            <Route path="/blog" element={<Blog/>} />
+            <Route path="/career" element={<Career/>} />
             <Route path="/about-us" element={<AboutUs />} />
           </Routes>
         </main>

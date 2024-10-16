@@ -1,0 +1,495 @@
+
+import EntertainmentCard from "./EntertainmentCard";
+
+const CategorySection = ({ category, articles }) => {
+  if (!category) {
+    console.warn("CategorySection: 'category' prop is required");
+    return null;
+  }
+
+  const safeArticles = articles || [];
+
+  return (
+    <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-4xl font-bold mb-8 text-neonGreen text-center">
+          <span className="relative">
+            {category}
+            <span className="absolute -bottom-2 left-0 right-0 h-1 bg-neonGreen/30 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+          </span>
+        </h2>
+
+        {safeArticles.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {safeArticles.map((article, index) => (
+              <EntertainmentCard
+                key={index}
+                {...article}
+                priority={index < 3}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-12">
+            <p className="text-gray-400 text-lg">
+              No articles available at the moment.
+            </p>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+};
+
+// export { ImageWithFallback, EntertainmentCard, CategorySection };
+export default CategorySection;
+
+this is CategorySection.js which is in components folder
+
+
+import React, { useEffect, useRef } from "react";
+import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+
+const HeroSection = () => {
+  const buttonRef = useRef(null);
+
+  useEffect(() => {
+    const button = buttonRef.current;
+    const handleMouseMove = (e) => {
+      const { left, top, width, height } = button.getBoundingClientRect();
+      const x = (e.clientX - left) / width;
+      const y = (e.clientY - top) / height;
+      button.style.setProperty("--x", x);
+      button.style.setProperty("--y", y);
+    };
+    button.addEventListener("mousemove", handleMouseMove);
+    return () => button.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  return (
+    <section className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black text-white overflow-hidden">
+      {/* Floating Background Elements */}
+      <div className="absolute w-48 h-48 bg-electricBlue rounded-full opacity-30 animate-float blur-lg top-10 left-10"></div>
+      <div className="absolute w-32 h-32 bg-neonGreen rounded-full opacity-40 animate-float-delay blur-xl bottom-16 right-20"></div>
+
+      {/* Hero Content */}
+      <div className="relative z-10 max-w-5xl mx-auto text-center px-6 py-12">
+        <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 text-neonGreen animate-fadeIn">
+          Welcome to EVS Network
+        </h1>
+        <p className="font-body text-lg sm:text-xl md:text-2xl text-gray-300 mb-6 max-w-2xl mx-auto animate-fadeIn delay-100">
+          Stay Updated with the Latest Trends in Entertainment, Music, and Art!
+        </p>
+
+        {/* Call to Action Button */}
+        <a
+          href="/hot-entertainment"
+          ref={buttonRef}
+          className="group relative inline-flex items-center px-6 py-3 md:px-8 md:py-4 bg-neonGreen/20 text-neonGreen border border-neonGreen/50 rounded-full text-lg font-medium hover:bg-neonGreen hover:text-black transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
+        >
+          <span className="relative z-10">Explore Entertainment</span>
+          <span
+            className="absolute inset-0 bg-gradient-to-r from-neonGreen to-electricBlue opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            style={{
+              transform:
+                "translate(calc(var(--x, 0) * 100%), calc(var(--y, 0) * 100%))",
+            }}
+          ></span>
+        </a>
+
+        {/* Tagline Section */}
+        <div className="mt-12 animate-fadeIn delay-200">
+          <h3 className="text-2xl md:text-3xl font-semibold text-electricBlue mb-4">
+            Your All-in-One Entertainment Hub
+          </h3>
+          <p className="font-body text-gray-400 max-w-md mx-auto">
+            Discover what's trending in Bollywood, Hollywood, and Traditional Art. 
+            Your journey into glamour starts here!
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default HeroSection;
+
+
+this is HeroSection.js which is in components folder
+
+
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+
+  const toggleDropdown = (category) =>
+    setActiveDropdown(activeDropdown === category ? null : category);
+
+  const categories = [
+    { name: "Hot Entertainment", path: "/hot-entertainment" },
+    { name: "Music", path: "/music" },
+    { name: "Traditional Art", path: "/traditional-art" },
+    { name: "Blog", path: "/blog" },
+    { name: "Careers", path: "/career" },
+  ];
+
+  const NavLink = ({ to, children, hasDropdown, category }) => (
+    <div className="relative group">
+      <Link
+        to={to}
+        className="text-neonGreen hover:text-white transition-colors px-4 py-2"
+        onClick={() => toggleDropdown(category)}
+      >
+        {children}
+      </Link>
+      {hasDropdown && (
+        <div
+          className={`absolute left-0 mt-2 w-48 bg-black border border-neonGreen rounded-md shadow-lg z-50 ${
+            activeDropdown === category ? "block" : "hidden"
+          }`}
+        >
+          <Link
+            to={`${to}/bollywood`}
+            className="block px-4 py-2 text-sm text-neonGreen hover:bg-neonGreen hover:text-black"
+          >
+            Bollywood
+          </Link>
+          <Link
+            to={`${to}/hollywood`}
+            className="block px-4 py-2 text-sm text-neonGreen hover:bg-neonGreen hover:text-black"
+          >
+            Hollywood
+          </Link>
+        </div>
+      )}
+    </div>
+  );
+
+  const MobileNavLink = ({ to, onClick, children, hasDropdown, category }) => (
+    <div className="py-2">
+      {hasDropdown ? (
+        <button
+          onClick={() => toggleDropdown(category)}
+          className="w-full text-left text-neonGreen hover:text-white transition-colors py-2"
+        >
+          {children}
+        </button>
+      ) : (
+        <Link
+          to={to}
+          className="w-full text-left text-neonGreen hover:text-white transition-colors py-2"
+          onClick={onClick}
+        >
+          {children}
+        </Link>
+      )}
+      {hasDropdown && activeDropdown === category && (
+        <div className="pl-4 space-y-2">
+          <Link
+            to={`${to}/bollywood`}
+            className="block text-neonGreen hover:text-white py-2"
+            onClick={() => {
+              onClick();
+              setIsOpen(false);
+            }}
+          >
+            Bollywood
+          </Link>
+          <Link
+            to={`${to}/hollywood`}
+            className="block text-neonGreen hover:text-white py-2"
+            onClick={() => {
+              onClick();
+              setIsOpen(false);
+            }}
+          >
+            Hollywood
+          </Link>
+        </div>
+      )}
+    </div>
+  );
+
+  return (
+    <nav className="bg-gradient-to-r from-black via-gray-800 to-black p-4 fixed top-0 left-0 right-0 z-50 border-b-2 border-neonGreen shadow-lg">
+      <div className="container mx-auto flex justify-between items-center">
+        {/* Logo */}
+        <div className="text-neonGreen text-3xl font-extrabold tracking-wide">
+          EVS Network
+        </div>
+
+        {/* Desktop Links */}
+        <div className="hidden md:flex space-x-6">
+          <NavLink to="/">Home</NavLink>
+          {categories.map((category) => (
+            <NavLink
+              key={category.path}
+              to={category.path}
+              hasDropdown={["Hot Entertainment", "Music", "Traditional Art"].includes(
+                category.name
+              )}
+              category={category.name}
+            >
+              {category.name}
+            </NavLink>
+          ))}
+          <NavLink to="/about-us">About Us</NavLink>
+        </div>
+
+        {/* Hamburger Button for Mobile */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden text-neonGreen focus:outline-none transition-transform duration-300"
+        >
+          <svg
+            className={`w-6 h-6 transform ${isOpen ? "rotate-90" : ""}`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+            />
+          </svg>
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden mt-4 space-y-2 bg-black border-t border-neonGreen shadow-lg">
+          <MobileNavLink to="/" onClick={() => setIsOpen(false)}>
+            Home
+          </MobileNavLink>
+          {categories.map((category) => (
+            <MobileNavLink
+              key={category.path}
+              to={category.path}
+              onClick={() => setIsOpen(false)}
+              hasDropdown={["Hot Entertainment", "Music", "Traditional Art"].includes(
+                category.name
+              )}
+              category={category.name}
+            >
+              {category.name}
+            </MobileNavLink>
+          ))}
+          <MobileNavLink to="/about-us" onClick={() => setIsOpen(false)}>
+            About Us
+          </MobileNavLink>
+        </div>
+      )}
+    </nav>
+  );
+};
+
+export default Navbar;
+
+
+this is Navbar.js which is in components folder
+
+
+import React from "react";
+import { Link } from "react-router-dom";
+
+const Career = () => {
+  const jobListings = [
+    {
+      title: "Full Stack Developer Intern",
+      location: "Remote",
+      description: "Join our team to work on exciting projects and gain hands-on experience in full-stack development.",
+      requirements: [
+        "Proficient in React and Node.js",
+        "Understanding of RESTful APIs",
+        "Familiarity with Git version control",
+        "Strong problem-solving skills",
+      ],
+      applyLink: "https://yourcompany.com/apply/full-stack-developer-intern",
+    },
+    {
+      title: "UI/UX Designer",
+      location: "Remote",
+      description: "We are looking for a creative UI/UX Designer to create engaging and user-friendly designs.",
+      requirements: [
+        "Proficiency in design tools like Figma, Sketch, or Adobe XD",
+        "Strong portfolio showcasing previous design work",
+        "Ability to work collaboratively in a team",
+        "Good understanding of user-centered design principles",
+      ],
+      applyLink: "https://yourcompany.com/apply/ui-ux-designer",
+    },
+    {
+      title: "Marketing Coordinator",
+      location: "Remote",
+      description: "Help us grow our brand awareness and reach through effective marketing strategies.",
+      requirements: [
+        "Experience with social media marketing",
+        "Excellent written and verbal communication skills",
+        "Ability to analyze marketing data and metrics",
+        "Strong organizational skills",
+      ],
+      applyLink: "https://yourcompany.com/apply/marketing-coordinator",
+    },
+  ];
+
+  return (
+    <div>
+      {/* Header Section */}
+      <div className="bg-gray-900 text-white py-24 text-center">
+        <h1 className="text-5xl font-bold">Careers</h1>
+        <p className="mt-4 text-lg">
+          <Link to="/" className="hover:text-neonGreen">Home</Link> &gt; Careers
+        </p> 
+      </div>
+
+      {/* Careers Section */}
+      <div className="container mx-auto px-4 py-8">
+        <h2 className="text-4xl font-bold text-neonGreen mb-6 text-center">Discover your new career</h2>
+        <p className="text-lg mb-8 text-center text-gray-600">
+          Come be part of our team with Inventics – bring your ideas and determination to make a difference.
+          Join us and help our clients become the best versions of themselves.
+        </p>
+
+        {/* Job Listings */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {jobListings.map((job, index) => (
+            <div key={index} className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
+              <h3 className="text-2xl font-semibold text-neonGreen">{job.title}</h3>
+              <p className="text-gray-600">{job.location}</p>
+              <p className="text-gray-700 mb-2">{job.description}</p>
+              <h4 className="font-bold text-neonGreen">Requirements:</h4>
+              <ul className="list-disc list-inside text-gray-700 mb-4">
+                {job.requirements.map((requirement, reqIndex) => (
+                  <li key={reqIndex}>{requirement}</li>
+                ))}
+              </ul>
+              <a
+                href={job.applyLink}
+                className="inline-block bg-neonGreen text-black px-4 py-2 rounded hover:bg-green-600 transition duration-300"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Apply Now
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Career;
+
+this is Career.js which is pages folder
+
+import React from "react";
+import HeroSection from "../components/HeroSection";
+import CategorySection from "../components/CategorySection";
+import EntertainmentCard from "../components/EntertainmentCard";
+
+const Home = () => {
+  const categoryData = [
+    {
+      title: "Bollywood Blockbusters",
+      image: "path/to/bollywood-image.jpg",
+      description:
+        "Get the latest updates on Bollywood's hottest movies and stars.",
+      link: "/hot-entertainment",
+    },
+    {
+      title: "Hollywood Hits",
+      image: "path/to/hollywood-image.jpg",
+      description: "Catch the biggest Hollywood movies and entertainment news.",
+      link: "/hot-entertainment",
+    },
+  ];
+
+  return (
+    <div className="bg-blackBg">
+      <HeroSection />
+      <CategorySection
+        title="Featured Entertainment"
+        categories={categoryData}
+      />
+    </div>
+  );
+};
+
+export default Home;
+
+this is Home.js which is in pages folder
+
+
+
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import HotEntertainment from "./pages/HotEntertainment";
+import Music from "./pages/Music";
+import TraditionalArt from "./pages/TraditionalArt";
+import AboutUs from "./pages/AboutUs";
+
+// Import new components
+import HotEntertainmentBollywood from "./pages/HotEntertainmentBollywood";
+import HotEntertainmentHollywood from "./pages/HotEntertainmentHollywood";
+import MusicBollywood from "./pages/MusicBollywood";
+import MusicHollywood from "./pages/MusicHollywood";
+import TraditionalArtBollywood from "./pages/TraditionalArtBollywood";
+import TraditionalArtHollywood from "./pages/TraditionalArtHollywood";
+import Career from "./pages/Career";
+import Blog from "./pages/Blog";
+
+function App() {
+  return (
+    <Router>
+      <div className="bg-blackBg min-h-screen text-neonGreen flex flex-col">
+        <Navbar />
+        <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/hot-entertainment" element={<HotEntertainment />} />
+            <Route
+              path="/hot-entertainment/bollywood"
+              element={<HotEntertainmentBollywood />}
+            />
+            <Route
+              path="/hot-entertainment/hollywood"
+              element={<HotEntertainmentHollywood />}
+            />
+            <Route path="/music" element={<Music />} />
+            <Route path="/music/bollywood" element={<MusicBollywood />} />
+            <Route path="/music/hollywood" element={<MusicHollywood />} />
+            <Route path="/traditional-art" element={<TraditionalArt />} />
+            <Route
+              path="/traditional-art/bollywood"
+              element={<TraditionalArtBollywood />}
+            />
+            <Route
+              path="/traditional-art/hollywood"
+              element={<TraditionalArtHollywood />}
+            />
+            <Route path="/blog" element={<Blog/>} />
+            <Route path="/career" element={<Career/>} />
+            <Route path="/about-us" element={<AboutUs />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
+  );
+}
+
+export default App;
+
+
+this is App.js
+

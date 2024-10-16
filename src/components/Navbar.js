@@ -1,8 +1,6 @@
-
-
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import logo from '../images/evslogo5.png';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,6 +13,8 @@ const Navbar = () => {
     { name: "Hot Entertainment", path: "/hot-entertainment" },
     { name: "Music", path: "/music" },
     { name: "Traditional Art", path: "/traditional-art" },
+    { name: "Blog", path: "/blog" },
+    { name: "Careers", path: "/career" },
   ];
 
   const NavLink = ({ to, children, hasDropdown, category }) => (
@@ -62,7 +62,7 @@ const Navbar = () => {
         <Link
           to={to}
           className="w-full text-left text-neonGreen hover:text-white transition-colors py-2"
-          onClick={onClick} // Call onClick when the link is clicked
+          onClick={onClick}
         >
           {children}
         </Link>
@@ -98,9 +98,9 @@ const Navbar = () => {
     <nav className="bg-gradient-to-r from-black via-gray-800 to-black p-4 fixed top-0 left-0 right-0 z-50 border-b-2 border-neonGreen shadow-lg">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
-        <div className="text-neonGreen text-3xl font-extrabold tracking-wide">
-          EVS Network
-        </div>
+        <Link to="/">
+          <img src={logo} alt="EVS Network Logo" className="h-14 w-auto mr-10" />
+        </Link>
 
         {/* Desktop Links */}
         <div className="hidden md:flex space-x-6">
@@ -109,7 +109,9 @@ const Navbar = () => {
             <NavLink
               key={category.path}
               to={category.path}
-              hasDropdown={true}
+              hasDropdown={["Hot Entertainment", "Music", "Traditional Art"].includes(
+                category.name
+              )}
               category={category.name}
             >
               {category.name}
@@ -150,8 +152,10 @@ const Navbar = () => {
             <MobileNavLink
               key={category.path}
               to={category.path}
-              onClick={() => setIsOpen(false)} // Pass onClick to close the menu
-              hasDropdown={true}
+              onClick={() => setIsOpen(false)}
+              hasDropdown={["Hot Entertainment", "Music", "Traditional Art"].includes(
+                category.name
+              )}
               category={category.name}
             >
               {category.name}
@@ -167,4 +171,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
