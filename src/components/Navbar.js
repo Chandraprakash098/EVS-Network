@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from '../images/evslogo5.png';
+import logo from '../images/logo.jpeg';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -99,7 +99,7 @@ const Navbar = () => {
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
         <Link to="/">
-          <img src={logo} alt="EVS Network Logo" className="h-10 w-auto mr-10" />
+          <img src={logo} alt="EVS Network Logo" className="h-12 w-auto mr-10" />
         </Link>
 
         {/* Desktop Links */}
