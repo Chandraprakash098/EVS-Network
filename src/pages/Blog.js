@@ -1,27 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import img1 from '../images/pexels-rdne-5921658.jpg'
-import img2 from '../images/pexels-artempodrez-5716032.jpg'
-import img3 from '../images/pexels-solliefoto-320617.jpg'
+import img1 from '../images/blog1.jpeg'
+import img2 from '../images/blog2.jpeg'
+import img3 from '../images/blog3.jpeg'
 const Blog = () => {
   const blogPosts = [
     {
-      title: "Strategies you can use to market your music",
+      title: "Bollywood versus Independent Artists: A Change in Preferences of the Audience",
       image: img1,
-      description: "Explore how you can market your music using the latest strategies.",
       link: "/blog/strategies-for-music",
     },
     {
-      title: "The Digital Marketing Landscape in 2024: Trends and Strategy",
+      title: "BookMyShow Warns Fans against Unauthorized Coldplay Ticket Sales: It's Illegal in India",
       image: img2,
-      description: "Learn about the latest trends and strategies in digital marketing for 2024.",
       link: "/blog/digital-marketing-2024",
-    },
-    {
-      title: "How AI is a Problem Solver for Video Production",
-      image: img3,
-      description: "Discover how AI is transforming the video production industry.",
-      link: "/blog/ai-in-video-production",
     },
     // Add more blog posts here as needed
   ];
@@ -46,14 +38,15 @@ const Blog = () => {
             >
               <img
                 src={post.image}
-                className="rounded-lg mb-4 w-full object-cover h-48"
+                className="rounded-lg mb-4 w-full object-cover h-60"
               />
-              <h3 className="text-2xl font-semibold text-neonGreen mb-2">
+              <h3 className="text-2xl font-semibold text-black mb-2">
                 {post.title}
               </h3>
+
               <p className="text-gray-700 mb-4">{post.description}</p>
               <Link
-                to={post.link}
+                to={`/blog/${index}`}
                 className="inline-block bg-neonGreen text-black px-4 py-2 rounded hover:bg-green-600 transition duration-300"
               >
                 Read More

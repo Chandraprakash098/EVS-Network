@@ -82,7 +82,7 @@ const HotEntertainment = () => {
             >
               <img
                 src={article.image}
-                className="w-full h-48 object-cover"
+                className="w-full h-70 object-cover"
               />
               <div className="p-6">
                 <h3 className="text-neonGreen text-2xl font-semibold mb-3">

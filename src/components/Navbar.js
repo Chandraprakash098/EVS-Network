@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from '../images/logo.jpeg';
+import logo from "../images/logo1.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -98,9 +98,21 @@ const Navbar = () => {
     <nav className="bg-gradient-to-r from-black via-gray-800 to-black p-4 fixed top-0 left-0 right-0 z-50 border-b-2 border-neonGreen shadow-lg">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
-        <Link to="/">
+
+        {/* <Link to="/">
           <img src={logo} alt="EVS Network Logo" className="h-12 w-auto mr-10" />
         </Link>
+        <Link to="/">
+          Evosyncthtech
+        </Link> */}
+        <div className="flex items-center space-x-0">
+          <Link to="/">
+            <img src={logo} alt="EVS Network Logo" className="h-12 w-auto" />
+          </Link>
+          <Link to="/" className="text-white text-lg font-bold">
+            Evosynchtech
+          </Link>
+        </div>
 
         {/* Desktop Links */}
         <div className="hidden md:flex space-x-6">
@@ -109,9 +121,11 @@ const Navbar = () => {
             <NavLink
               key={category.path}
               to={category.path}
-              hasDropdown={["Hot Entertainment", "Music", "Traditional Art"].includes(
-                category.name
-              )}
+              hasDropdown={[
+                "Hot Entertainment",
+                "Music",
+                "Traditional Art",
+              ].includes(category.name)}
               category={category.name}
             >
               {category.name}
@@ -153,9 +167,11 @@ const Navbar = () => {
               key={category.path}
               to={category.path}
               onClick={() => setIsOpen(false)}
-              hasDropdown={["Hot Entertainment", "Music", "Traditional Art"].includes(
-                category.name
-              )}
+              hasDropdown={[
+                "Hot Entertainment",
+                "Music",
+                "Traditional Art",
+              ].includes(category.name)}
               category={category.name}
             >
               {category.name}
@@ -171,3 +187,7 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+
+

@@ -1,5 +1,5 @@
 import React from "react";
-import { FaFacebook, FaInstagram, FaLinkedin, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLinkedin, FaEnvelope, FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -62,15 +62,15 @@ const Footer = () => {
         {/* Social Links */}
         <div className="flex space-x-6 mb-4 sm:mb-0">
           <a
-            href="https://facebook.com"
+            href="https://api.whatsapp.com/send?phone=8957128328"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-white transition-colors"
           >
-            <FaFacebook size={24} />
+            <FaWhatsapp size={24} />
           </a>
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/evosynchtech/?igsh=ZHBvNGE5anl1aDZq"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-white transition-colors"
@@ -78,7 +78,7 @@ const Footer = () => {
             <FaInstagram size={24} />
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/company/evosynchtech/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-white transition-colors"

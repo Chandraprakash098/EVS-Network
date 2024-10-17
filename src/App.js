@@ -19,6 +19,7 @@ import TraditionalArtBollywood from "./pages/TraditionalArtBollywood";
 import TraditionalArtHollywood from "./pages/TraditionalArtHollywood";
 import Career from "./pages/Career";
 import Blog from "./pages/Blog";
+import BlogDetail from "./pages/BlogDetail";
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
               element={<TraditionalArtHollywood />}
             />
             <Route path="/blog" element={<Blog/>} />
+            <Route path="/blog/:id" element={<BlogDetail />} />
             <Route path="/career" element={<Career/>} />
             <Route path="/about-us" element={<AboutUs />} />
           </Routes>

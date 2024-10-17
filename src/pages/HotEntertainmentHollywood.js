@@ -74,7 +74,7 @@ const HotEntertainmentHollywood = () => {
               <img
                 src={article.image}
                 // alt={article.title}
-                className="w-full h-56 object-cover transition-transform duration-300 hover:scale-110"
+                className="w-full h-60 object-cover transition-transform duration-300 hover:scale-110"
               />
               <div className="p-6">
                 <h3 className="text-Green text-2xl font-bold mb-3">
