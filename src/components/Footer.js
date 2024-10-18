@@ -8,16 +8,16 @@ const Footer = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
         {/* Quick Links */}
         <div className="flex flex-col space-y-3">
-          <h2 className="text-xl font-bold mb-4">Quick Links</h2>
+          <h2 className="text-xl font-bold text-green-500 mb-4">Quick Links</h2>
           <a href="/" className="hover:text-white transition-colors">Home</a>
           <a href="/hot-entertainment" className="hover:text-white transition-colors">Hot Entertainment</a>
           <a href="/music" className="hover:text-white transition-colors">Music</a>
-          <a href="/about-us" className="hover:text-white transition-colors">About Us</a>
+          <a href="/about-us" className="hover:text-white  transition-colors">About Us</a>
         </div>
 
         {/* Contact Form */}
         <div>
-          <h2 className="text-xl font-bold mb-4">Contact Us</h2>
+          <h2 className="text-xl font-bold text-green-500 mb-4">Contact Us</h2>
           <form className="flex flex-col space-y-4">
             <input
               type="text"
@@ -44,7 +44,7 @@ const Footer = () => {
 
         {/* Contact Info */}
         <div className="space-y-4">
-          <h2 className="text-xl font-bold mb-4">Get in Touch</h2>
+          <h2 className="text-xl font-bold text-green-500 mb-4">Get in Touch</h2>
           <p className="flex items-center space-x-3">
             <FaEnvelope /> <span>evosynchtech@gmail.com</span>
           </p>

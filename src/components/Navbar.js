@@ -1,13 +1,21 @@
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../images/logo1.png";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [isOpen, setIsOpen] = useState(false); // For mobile hamburger menu
+  const [activeDropdown, setActiveDropdown] = useState(null); // Track open dropdowns
 
+  // Toggles dropdown state for desktop view
   const toggleDropdown = (category) =>
     setActiveDropdown(activeDropdown === category ? null : category);
+
+  // Closes dropdown and mobile menu
+  const closeMenus = () => {
+    setActiveDropdown(null);
+    setIsOpen(false);
+  };
 
   const categories = [
     { name: "Hot Entertainment", path: "/hot-entertainment" },
@@ -35,12 +43,14 @@ const Navbar = () => {
           <Link
             to={`${to}/bollywood`}
             className="block px-4 py-2 text-sm text-neonGreen hover:bg-neonGreen hover:text-black"
+            onClick={closeMenus}
           >
             Bollywood
           </Link>
           <Link
             to={`${to}/hollywood`}
             className="block px-4 py-2 text-sm text-neonGreen hover:bg-neonGreen hover:text-black"
+            onClick={closeMenus}
           >
             Hollywood
           </Link>
@@ -49,7 +59,7 @@ const Navbar = () => {
     </div>
   );
 
-  const MobileNavLink = ({ to, onClick, children, hasDropdown, category }) => (
+  const MobileNavLink = ({ to, children, hasDropdown, category }) => (
     <div className="py-2">
       {hasDropdown ? (
         <button
@@ -62,7 +72,7 @@ const Navbar = () => {
         <Link
           to={to}
           className="w-full text-left text-neonGreen hover:text-white transition-colors py-2"
-          onClick={onClick}
+          onClick={closeMenus}
         >
           {children}
         </Link>
@@ -72,20 +82,14 @@ const Navbar = () => {
           <Link
             to={`${to}/bollywood`}
             className="block text-neonGreen hover:text-white py-2"
-            onClick={() => {
-              onClick();
-              setIsOpen(false);
-            }}
+            onClick={closeMenus}
           >
             Bollywood
           </Link>
           <Link
             to={`${to}/hollywood`}
             className="block text-neonGreen hover:text-white py-2"
-            onClick={() => {
-              onClick();
-              setIsOpen(false);
-            }}
+            onClick={closeMenus}
           >
             Hollywood
           </Link>
@@ -97,14 +101,6 @@ const Navbar = () => {
   return (
     <nav className="bg-gradient-to-r from-black via-gray-800 to-black p-4 fixed top-0 left-0 right-0 z-50 border-b-2 border-neonGreen shadow-lg">
       <div className="container mx-auto flex justify-between items-center">
-        {/* Logo */}
-
-        {/* <Link to="/">
-          <img src={logo} alt="EVS Network Logo" className="h-12 w-auto mr-10" />
-        </Link>
-        <Link to="/">
-          Evosyncthtech
-        </Link> */}
         <div className="flex items-center space-x-0">
           <Link to="/">
             <img src={logo} alt="EVS Network Logo" className="h-12 w-auto" />
@@ -159,14 +155,13 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden mt-4 space-y-2 bg-black border-t border-neonGreen shadow-lg">
-          <MobileNavLink to="/" onClick={() => setIsOpen(false)}>
+          <MobileNavLink to="/" hasDropdown={false}>
             Home
           </MobileNavLink>
           {categories.map((category) => (
             <MobileNavLink
               key={category.path}
               to={category.path}
-              onClick={() => setIsOpen(false)}
               hasDropdown={[
                 "Hot Entertainment",
                 "Music",
@@ -177,7 +172,7 @@ const Navbar = () => {
               {category.name}
             </MobileNavLink>
           ))}
-          <MobileNavLink to="/about-us" onClick={() => setIsOpen(false)}>
+          <MobileNavLink to="/about-us" hasDropdown={false}>
             About Us
           </MobileNavLink>
         </div>
