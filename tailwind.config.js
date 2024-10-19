@@ -1,4 +1,5 @@
 
+
 // module.exports = {
 //   content: ["./src/**/*.{js,jsx,ts,tsx}"],
 //   theme: {
@@ -9,58 +10,20 @@
 //         hotPink: "var(--hot-pink)",
 //         electricBlue: "var(--electric-blue)",
 //         gold: "var(--gold)",
+//         silver: "var(--silver)",
+//         darkGray: "var(--dark-gray)",
+//         lightGray: "var(--light-gray)",
 //       },
-//       animation: {
-//         glow: "glow 2s ease-in-out infinite alternate",
+//       boxShadow: {
+//         neonGreen: "0 0 15px var(--neon-green)",
+//         hotPink: "0 0 20px var(--hot-pink)",
 //       },
 //     },
 //   },
 //   plugins: [],
 // };
 
-// module.exports = {
-//   content: ["./src/**/*.{js,jsx,ts,tsx}"],
-//   theme: {
-//     extend: {
-//       colors: {
-//         neonGreen: "#4dff4d",
-//         deepPurple: "#2a0a29",
-//         hotPink: "#ff79c6",
-//         electricBlue: "#7DF9FF",
-//         gold: "#ffd700",
-//         blackBg: "#0a0a0a",
-//       },
-//       fontFamily: {
-//         heading: ['Orbitron', 'sans-serif'],
-//         body: ['Poppins', 'sans-serif'],
-//       },
-//       animation: {
-//         glow: "glow 2s ease-in-out infinite alternate",
-//         tilt: "tilt 10s infinite linear",
-//       },
-//       keyframes: {
-//         glow: {
-//           "0%": { textShadow: "0 0 10px #4dff4d" },
-//           "100%": { textShadow: "0 0 20px #4dff4d, 0 0 30px #4dff4d" },
-//         },
-//         tilt: {
-//           "0%, 50%, 100%": { transform: "rotate(0deg)" },
-//           "25%": { transform: "rotate(1deg)" },
-//           "75%": { transform: "rotate(-1deg)" },
-//         },
-//       },
-//       backdropFilter: {
-//         'none': 'none',
-//         'blur': 'blur(20px)',
-//       },
-//     },
-//   },
-//   plugins: [
-//     require('@tailwindcss/aspect-ratio'),
-//     // Remove the following line if you're not using @tailwindcss/forms
-//     // require('@tailwindcss/forms'),
-//   ],
-// };
+
 
 
 module.exports = {
@@ -76,12 +39,50 @@ module.exports = {
         silver: "var(--silver)",
         darkGray: "var(--dark-gray)",
         lightGray: "var(--light-gray)",
+        // New colors for the glamour theme
+        glamPink: "#FF69B4",
+        glamPurple: "#8A2BE2",
+        glamBlue: "#1E90FF",
+      },
+      fontFamily: {
+        heading: ['Playfair Display', 'serif'],
+        body: ['Montserrat', 'sans-serif'],
       },
       boxShadow: {
         neonGreen: "0 0 15px var(--neon-green)",
         hotPink: "0 0 20px var(--hot-pink)",
+        glam: "0 0 25px rgba(255, 105, 180, 0.5)",
+      },
+      animation: {
+        float: "float 6s ease-in-out infinite",
+        pulse: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        shimmer: "shimmer 2s linear infinite",
+      },
+      keyframes: {
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-20px)" },
+        },
+        pulse: {
+          "0%, 100%": { opacity: 1 },
+          "50%": { opacity: .5 },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "-200%" },
+          "100%": { backgroundPosition: "200%" },
+        },
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'glitter': 'url("/path/to/glitter-texture.png")',
+      },
+      backdropFilter: {
+        'none': 'none',
+        'blur': 'blur(20px)',
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+  ],
 };

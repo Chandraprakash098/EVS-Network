@@ -39,7 +39,7 @@ const AboutUs = () => {
 
       {/* Why Choose Us Section */}
       <div className="bg-gray-800 bg-opacity-30 rounded-xl p-8 max-w-5xl mx-auto mt-12 animate-fadeIn delay-300">
-        <h3 className="text-3xl font-semibold text-neonGreen text-center mb-6">
+        <h3 className="text-3xl font-semibold text-Green text-center mb-6">
           Why Choose EVS Network?
         </h3>
         <ul className="space-y-4 text-gray-300">
@@ -64,7 +64,7 @@ const AboutUs = () => {
 
       {/* Testimonials Section */}
       <div className="max-w-6xl mx-auto py-12 mt-16 text-center">
-        <h3 className="text-3xl font-semibold text-neonGreen mb-8">
+        <h3 className="text-3xl font-semibold text-Green mb-8">
           What Our Users Say
         </h3>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -96,3 +96,6 @@ const AboutUs = () => {
 };
 
 export default AboutUs;
+
+
+
